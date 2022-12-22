@@ -1,0 +1,31 @@
+#cloud-config
+users:
+  - name: otusinfra
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDmHSSQa6E0cNUIqJ+MAMmkgaWAhUgKZTqDjEQUilmKcbYb5zF0YN2k6/vOWJqdL/kmedazR6mmssq3f8FjRaHdkYRf8lxFGxqHt5DsE+hkMAw6aQsXBG/mRXujnEl/mMq+4y329YcsOuHai1yzgoeOAjk//Vyf2mxnCAC7FpYF9NKmIXgYKMlybCmtXjgAGqmq1DLYrHCXwhftQ4BGLpTHfA2FmBOG2SssZA6Lw5ZpESB8QCnGkfYe5YqUpcJS1PHdIB3gHZkqlA0BpdfiUaHhJGE7MMUYMStbrjoaZMc7yLxqVs/+N6aD5Y44fdgxH3oGTeJ1a9GOv/uwfH5m09OXQnGy2WUc33MMqvkUWUJeyOEzoxP+1SRFuttupoyzRuSZTSTzX6TZ5y/ph/4BYT4aly8NK9VzKtjtRBUKv2B24cuNTrrGjBKNWUsCi+M4jCvxqfBZAl+gjgU8le007CMSx7J3NoGh+ikYPqglxkahzdEWrObnyZswfyBxv/9dgZU= otusinfra
+
+package_update: true
+
+write_files:
+  - path: /home/otusinfra/startup_script.sh
+    owner: otusinfra:otusinfra
+    permissions: '0755'
+    content: |
+      sudo apt update -y
+      sudo apt upgrade -y
+      sudo apt install -y ruby-full ruby-bundler build-essential
+      wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+      echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+      sudo apt-get update
+      sudo apt-get install -y mongodb-org
+      sudo /bin/systemctl start mongod
+      sudo /bin/systemctl enable mongod
+      sudo apt install git -y
+      git clone -b monolith https://github.com/express42/reddit.git
+      cd reddit && bundle install
+      puma -d
+runcmd:
+    - bash /home/otusinfra/startup_script.sh

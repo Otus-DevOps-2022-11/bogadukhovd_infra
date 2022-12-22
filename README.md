@@ -24,4 +24,19 @@ bogadukhovd Infra repository
     ```
 
 bastion_IP = 158.160.34.54
+
 someinternalhost_IP = 10.128.0.27
+
+## HW-05:
+yc compute instance create \
+  --name reddit-app-auto-deploy \
+  --hostname reddit-app-auto-deploy \
+  --memory=4 \
+  --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB \
+  --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
+  --metadata-from-file user-data=metadata.yaml \
+  --metadata serial-port-enable=1
+
+testapp_IP = 51.250.3.91
+
+testapp_port = 9292
