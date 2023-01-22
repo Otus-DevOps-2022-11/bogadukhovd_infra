@@ -40,3 +40,8 @@ yc compute instance create \
 testapp_IP = 51.250.3.91
 
 testapp_port = 9292
+
+## HW-06: packer-base
+- Создан образ ubuntu16.json через packer с параметризацией
+- Создан образ immutable.json
+- Создан скрипт create-reddit-vm.sh
