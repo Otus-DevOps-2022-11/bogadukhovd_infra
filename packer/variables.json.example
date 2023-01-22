@@ -1,0 +1,8 @@
+{
+    "yc_service_account_key_file_path": "path",
+    "yc_folder_id": "folder_id_var",
+    "yc_source_id": "source_id_var",
+    "yc_subnet_id": "subnet_id_var",
+    "yc_zone": "zone_var",
+    "yc_image_family": "image-family_var"
+}
