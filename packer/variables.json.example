@@ -1,8 +1,8 @@
 {
-    "yc_service_account_key_file_path": "path",
-    "yc_folder_id": "folder_id_var",
-    "yc_source_id": "source_id_var",
-    "yc_subnet_id": "subnet_id_var",
-    "yc_zone": "zone_var",
-    "yc_image_family": "image-family_var"
+    "yc_service_account_key_file_path": "/.packer/key.json"",
+    "yc_folder_id": "b1**************5h,
+    "yc_source_id": "ubuntu-1604-lts,
+    "yc_subnet_id": "e9**************40",
+    "yc_zone": "ru-central1-a",
+    "yc_image_family": "reddit-base"
 }
