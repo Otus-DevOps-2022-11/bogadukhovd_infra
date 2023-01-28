@@ -20,7 +20,7 @@ resource "yandex_lb_network_load_balancer" "reddit-lb" {
   }
 
   attached_target_group {
-    target_group_id = "${yandex_lb_target_group.reddit-tg.id}"
+    target_group_id = yandex_lb_target_group.reddit-tg.id
 
     healthcheck {
       name = "http"
