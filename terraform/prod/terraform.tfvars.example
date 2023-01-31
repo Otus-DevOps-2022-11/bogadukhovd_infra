@@ -1,0 +1,11 @@
+cloud_id                 = "b1****************05"
+folder_id                = "b1****************5h"
+zone                     = "ru-central1-a"
+image_id                 = "fd****************no"
+public_key_path          = "ubuntu.pub"
+subnet_id                = "e9****************40"
+service_account_key_file = "key.json"
+private_key_path         = "ubuntu"
+instance_count           = 1
+app_disk_image           = "fd****************2j"
+db_disk_image            = "fd****************v1"
