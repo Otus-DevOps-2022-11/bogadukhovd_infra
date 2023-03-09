@@ -1,4 +1,5 @@
-packer/variables.json
+#orig
+variables.json
 *.tfstate
 *.tfstate.*.backup
 *.tfstate.backup
@@ -7,3 +8,10 @@ packer/variables.json
 *.retry
 jdauphant.nginx
 vault.key
+# Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
